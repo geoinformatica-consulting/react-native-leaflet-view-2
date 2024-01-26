@@ -1,4 +1,4 @@
-import * as ReactLeaflet from 'react-leaflet';
+import ReactLeaflet from 'leaflet';
 export type LatLng = ReactLeaflet.LatLng;
 export type Point = ReactLeaflet.Point;
 export type LatLngBounds = ReactLeaflet.LatLngBounds;
@@ -128,7 +128,7 @@ export interface WebviewLeafletMessagePayload {
   mapMarkerID?: string;
   touchLatLng?: LatLng;
   zoom?: number;
-  zoomControl?: boolean;
+  zoomControl: boolean;
 }
 
 export interface WebviewLeafletMessage {
