@@ -128,6 +128,7 @@ export interface WebviewLeafletMessagePayload {
   mapMarkerID?: string;
   touchLatLng?: LatLng;
   zoom?: number;
+  zoomControl?: boolean;
 }
 
 export interface WebviewLeafletMessage {

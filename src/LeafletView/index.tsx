@@ -199,8 +199,8 @@ const LeafletView: React.FC<LeafletViewProps> = ({
     if (!initialized) {
       return;
     }
-    sendMessage({ zoom });
-  }, [initialized, zoom, sendMessage]);
+    sendMessage({ zoom, zoomControl });
+  }, [initialized, zoom, zoomControl, sendMessage]);
 
   return (
     <WebView
@@ -228,6 +228,7 @@ LeafletView.defaultProps = {
   renderLoading: () => <LoadingIndicator />,
   mapLayers: DEFAULT_MAP_LAYERS,
   zoom: DEFAULT_ZOOM,
+  zoomControl: true,
   doDebug: __DEV__,
 };
 
