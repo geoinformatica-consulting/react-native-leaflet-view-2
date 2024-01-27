@@ -26,9 +26,9 @@ const LEAFLET_HTML_SOURCE = Platform.select({
 const DEFAULT_MAP_LAYERS = [
   {
     attribution:
-      '&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+      '',
     baseLayerIsChecked: true,
-    baseLayerName: 'OpenStreetMap.Mapnik',
+    baseLayerName: '',
     url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
   },
 ];
@@ -198,8 +198,20 @@ const LeafletView: React.FC<LeafletViewProps> = ({
     if (!initialized) {
       return;
     }
-    sendMessage({ zoom, zoomControl });
-  }, [initialized, zoom, zoomControl, sendMessage]);
+    sendMessage({
+      zoom,
+    });
+  }, [initialized, zoom, sendMessage]);
+
+  // Handle zoom control update
+  useEffect(() => {
+    if (!initialized) {
+      return;
+    }
+    sendMessage({
+      zoomControl
+    });
+  }, [initialized, zoomControl, sendMessage]);
 
   return (
     <WebView
