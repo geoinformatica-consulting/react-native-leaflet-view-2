@@ -25,8 +25,7 @@ const LEAFLET_HTML_SOURCE = Platform.select({
 
 const DEFAULT_MAP_LAYERS = [
   {
-    attribution:
-      '',
+    attribution:'OpenStreetMap',
     baseLayerIsChecked: true,
     baseLayerName: '',
     url: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
