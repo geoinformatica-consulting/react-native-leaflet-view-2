@@ -1,7 +1,7 @@
 {
-  "name": "@simpiancom/react-native-leaflet-view",
-  "version": "0.2.5",
-  "description": "A LeafletView component using WebView and Leaflet map for React Native applications",
+  "name": "react-native-leaflet-view-links",
+  "version": "0.0.1",
+  "description": "Forked from 0.2.5 version of @simpiancom/react-native-leaflet-view. A LeafletView component using WebView and Leaflet map for React Native applications",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
   "types": "lib/typescript/index.d.ts",
@@ -10,8 +10,6 @@
   "files": [
     "src",
     "lib",
-    "android",
-    "ios",
     "cpp",
     "react-native-leaflet.podspec",
     "!lib/typescript/example",
@@ -38,16 +36,17 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pavel-corsaghin/react-native-leaflet.git"
+    "url": "git+https://github.com/ksundeen/react-native-leaflet-view-links.git"
   },
-  "author": "Hung Nguyen <hungnm.k52tnvlkt@gmail.com> (https://github.com/pavel-corsaghin)",
+  "author": "(original author) Hung Nguyen <hungnm.k52tnvlkt@gmail.com> (https://github.com/pavel-corsaghin); (secondary author) Kim Sundeen, kim.h.sundeen@gmail.com, as the secondary author for the forked changes.",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/pavel-corsaghin/react-native-leaflet/issues"
+    "url": "https://github.com/ksundeen/react-native-leaflet-view-links/issues"
   },
-  "homepage": "https://github.com/pavel-corsaghin/react-native-leaflet#readme",
+  "homepage": "https://github.com/ksundeen/react-native-leaflet-view-links#readme",
   "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
+    "access": "public",
+    "@geoinformatica_consulting:registry": "https://registry.npmjs.org/"
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^18.6.0",
@@ -55,7 +54,7 @@
     "@release-it/conventional-changelog": "^8.0.1",
     "@types/jest": "^29.5.11",
     "@types/leaflet": "^1.9.8",
-    "@types/react": "^18.2.48",
+    "@types/react": "18.2.48",
     "@types/react-leaflet": "^3.0.0",
     "@types/react-native": "0.73.0",
     "commitlint": "^18.6.0",
@@ -76,8 +75,8 @@
     "typescript": "^5.3.3"
   },
   "peerDependencies": {
-    "react": "*",
-    "react-native": "*"
+    "react": "18.2.48",
+    "react-native": "0.73.2"
   },
   "jest": {
     "preset": "react-native",
