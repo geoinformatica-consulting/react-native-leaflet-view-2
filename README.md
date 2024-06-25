@@ -12,16 +12,16 @@ Notes: This project is replacement for https://github.com/reggie3/react-native-w
 
 ## Installation
 
-Install using npm or yarn like this:
+Install using pnpm the newer version of a combination of best qualities of npm and yarn like this:
 
 ```sh
-npm install --save react-native-leaflet-view
+pnpm install --save react-native-leaflet-view
 ```
 
 or
 
 ```sh
-yarn add react-native-leaflet-view
+pnpm add react-native-leaflet-view
 ```
 
 ## Usage
