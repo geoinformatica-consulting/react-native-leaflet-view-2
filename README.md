@@ -59,3 +59,24 @@ See the [contributing guide](CONTRIBUTING.md) to learn how to contribute to the 
 ## License
 
 MIT
+
+# Steps as Publishing Repo as Pacakage
+1. Make sure you're logged in to your npm account with `npm login` and then link the npm package to your github account
+
+    npm link
+
+2. Create or confirm you have an account through NPM. 
+3. Make sure you have an organization available through npm. You'll be publishing this package with this organization as the main scoped registry.
+3. Re-check all the links in the package.json are accurate. Especially visit each URL listed in the package.json that they go to the correct location.
+4. Update the package.json with the publish configuration details. You can purchase paid accounts, but for now we're using the free account to publish unlimited packages.
+
+        ...
+        "publishConfig": {
+            "access": "public",
+            "@geoinformatica_consulting:registry": "https://registry.npmjs.org/"
+        },
+        ...
+
+5. Confirm you're still logged into the correct npm account with `npm whoami`. If all is well, then execute the publish
+
+        npm publish

@@ -36,14 +36,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ksundeen/react-native-leaflet-view-links.git"
+    "url": "git+https://github.com/geoinformatica-consulting/react-native-leaflet-view-links.git"
   },
-  "author": "(original author) Hung Nguyen <hungnm.k52tnvlkt@gmail.com> (https://github.com/pavel-corsaghin); (secondary author) Kim Sundeen, kim.h.sundeen@gmail.com, as the secondary author for the forked changes.",
+  "author": "(original author) Hung Nguyen <hungnm.k52tnvlkt@gmail.com> (https://github.com/pavel-corsaghin); (secondary author) Kim Sundeen, geoinformatica.consulting@gmail.com, as the secondary author for the forked changes.",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ksundeen/react-native-leaflet-view-links/issues"
+    "url": "https://github.com/geoinformatica-consulting/react-native-leaflet-view-links/issues"
   },
-  "homepage": "https://github.com/ksundeen/react-native-leaflet-view-links#readme",
+  "homepage": "https://github.com/geoinformatica-consulting/react-native-leaflet-view-links#readme",
   "publishConfig": {
     "access": "public",
     "@geoinformatica_consulting:registry": "https://registry.npmjs.org/"
