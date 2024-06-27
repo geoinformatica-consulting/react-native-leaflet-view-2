@@ -15,7 +15,7 @@ Notes: This project is replacement for https://github.com/reggie3/react-native-w
 Install using pnpm the newer version of a combination of best qualities of npm and yarn like this:
 
 ```sh
-pnpm install --save react-native-leaflet-view
+pnpm add --save react-native-leaflet-2
 ```
 
 or
@@ -27,7 +27,7 @@ pnpm add react-native-leaflet-view
 ## Usage
 
 ```js
-import { LatLng, LeafletView } from 'react-native-leaflet-view';
+import { LatLng, LeafletView } from 'react-native-leaflet-view-2';
 
 <LeafletView
     // The rest of your props, see the list below
