@@ -19,8 +19,10 @@ import {
 import LoadingIndicator from '../LoadingIndicator';
 
 const LEAFLET_HTML_SOURCE = Platform.select({
-  ios: require('../../android/src/main/assets/leaflet.html'),
-  android: { uri: 'file:///android_asset/leaflet.html' },
+  ios: require('../../assets/leaflet.html'),
+  android: require('../../assets/leaflet.html'),
+  web: require('../../assets/leaflet.html')
+
 });
 
 const DEFAULT_MAP_LAYERS = [
