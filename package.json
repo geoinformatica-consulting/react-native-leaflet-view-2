@@ -17,7 +17,8 @@
     "!ios/build",
     "!**/__tests__",
     "!**/__fixtures__",
-    "!**/__mocks__"
+    "!**/__mocks__",
+    "assets"
   ],
   "scripts": {
     "test": "jest",
