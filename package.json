@@ -1,6 +1,6 @@
 {
   "name": "react-native-leaflet-view-2",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Forked from 0.2.5 version of @simpiancom/react-native-leaflet-view. A LeafletView component using WebView and Leaflet map for React Native applications",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
