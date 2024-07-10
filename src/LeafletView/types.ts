@@ -122,7 +122,7 @@ export interface MapMessage {
   zoomControl?: boolean;
 }
 
-export interface WebviewLeafletMessagePayload {
+export interface ViewLeafletMessagePayload {
   bounds?: LatLngBounds;
   mapCenterPosition: LatLng;
   mapMarkerID?: string;
@@ -131,11 +131,11 @@ export interface WebviewLeafletMessagePayload {
   zoomControl: boolean;
 }
 
-export interface WebviewLeafletMessage {
+export interface ViewLeafletMessage {
   event?: any;
   msg?: string;
   error?: string;
-  payload?: WebviewLeafletMessagePayload;
+  payload?: ViewLeafletMessagePayload;
 }
 
 export interface OwnPositionMarker {

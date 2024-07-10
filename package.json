@@ -1,6 +1,6 @@
 {
   "name": "react-native-leaflet-view-2",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Forked from 0.2.5 version of @simpiancom/react-native-leaflet-view. A LeafletView component using WebView and Leaflet map for React Native applications",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
@@ -64,6 +64,7 @@
     "husky": "^9.0.6",
     "jest": "^29.7.0",
     "leaflet": "^1.9.4",
+    "leaflet-svgicon": "^0.0.2",
     "pod-install": "^0.2.0",
     "prettier": "^3.2.4",
     "react": "18.2.0",
@@ -71,7 +72,9 @@
     "react-native": "0.74.2",
     "react-native-builder-bob": "^0.23.2",
     "react-native-webview": "^13.6.4",
+    "react-native-webview-alternative": "^0.0.3",
     "release-it": "^17.0.3",
+    "sax": "^1.4.1",
     "typescript": "^5.3.3"
   },
   "peerDependencies": {

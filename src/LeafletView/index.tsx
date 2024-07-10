@@ -1,8 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { WebView } from 'react-native-webview';
 import {
   MapMarker,
-  WebviewLeafletMessage,
+  ViewLeafletMessage,
   MapMessage,
   WebViewLeafletEvents,
   MapLayer,
@@ -11,18 +10,13 @@ import {
   OWN_POSTION_MARKER_ID,
 } from './types';
 import ReactLeaflet from 'leaflet';
-import { NativeSyntheticEvent, Platform, StyleSheet } from 'react-native';
-import {
-  WebViewError,
-  WebViewMessageEvent,
-} from 'react-native-webview/lib/WebViewTypes';
-import LoadingIndicator from '../LoadingIndicator';
+import { StyleSheet } from 'react-native';
+// import LoadingIndicator from '../LoadingIndicator';
+import WebView, { WebViewRef, WebViewMessageEvent }  from 'react-native-webview-alternative';
 
-const LEAFLET_HTML_SOURCE = Platform.select({
-  ios: require('../assets/leaflet.html'),
-  android: require('../assets/leaflet.html'),
-  web: require('../assets/leaflet.html')
-});
+const LEAFLET_HTML_SOURCE = {
+  html: require('../assets/leaflet.html')
+};
 
 const DEFAULT_MAP_LAYERS = [
   {
@@ -37,10 +31,8 @@ const DEFAULT_ZOOM = 15;
 
 export type LeafletViewProps = {
   renderLoading?: () => React.ReactElement;
-  onError?: (syntheticEvent: NativeSyntheticEvent<WebViewError>) => void;
-  onLoadEnd?: () => void;
-  onLoadStart?: () => void;
-  onMessageReceived?: (message: WebviewLeafletMessage) => void;
+  onLoad?: () => void;
+  onMessageReceived?: (message: ViewLeafletMessage) => void;
   mapLayers?: MapLayer[];
   mapMarkers?: MapMarker[];
   mapShapes?: MapShape[];
@@ -53,10 +45,7 @@ export type LeafletViewProps = {
 };
 
 const LeafletView: React.FC<LeafletViewProps> = ({
-  renderLoading,
-  onError,
-  onLoadEnd,
-  onLoadStart,
+  onLoad,
   onMessageReceived,
   mapLayers,
   mapMarkers,
@@ -67,25 +56,46 @@ const LeafletView: React.FC<LeafletViewProps> = ({
   zoomControl,
   doDebug,
 }) => {
-  const webViewRef = useRef<WebView>(null);
+
+  // if (!renderLoading) {
+  //   renderLoading = <LoadingIndicator/>
+  // };
+  if (!mapLayers) {
+    mapLayers = DEFAULT_MAP_LAYERS
+  };
+  if (!zoom) {
+    zoom = DEFAULT_ZOOM;
+  };
+  if (!zoomControl) {
+    zoomControl = true
+  };
+  if (!doDebug) {
+    doDebug = true
+  };
+
+  const viewRef = useRef<WebViewRef>(null)
+
   const [initialized, setInitialized] = useState(false);
+  // const [mainMessage, setMainMessage] = useState('')
 
   const logMessage = useCallback(
     (message: string) => {
       if (doDebug) {
         console.log(message);
+        // setMainMessage(message);
       }
     },
     [doDebug]
   );
 
+
   const sendMessage = useCallback(
     (payload: MapMessage) => {
-      logMessage(`sending: ${JSON.stringify(payload)}`);
+      const _message1 = `sending: ${JSON.stringify(payload)}`
+      logMessage(_message1);
 
-      webViewRef.current?.injectJavaScript(
-        `window.postMessage(${JSON.stringify(payload)}, '*');`
-      );
+      const _message2 = `window.postMessage(${JSON.stringify(payload)}, '*');`
+      viewRef.current?.injectJavaScript(_message2);
     },
     [logMessage]
   );
@@ -131,12 +141,12 @@ const LeafletView: React.FC<LeafletViewProps> = ({
 
   const handleMessage = useCallback(
     (event: WebViewMessageEvent) => {
-      const data = event?.nativeEvent?.data;
-      if (!data) {
+      const msg = event?.nativeEvent?.message.toString();// | mainMessage;
+      if (!msg) {
         return;
       }
 
-      const message: WebviewLeafletMessage = JSON.parse(data);
+      const message: ViewLeafletMessage = JSON.parse(msg);
       logMessage(`received: ${JSON.stringify(message)}`);
 
       if (message.msg === WebViewLeafletEvents.MAP_READY) {
@@ -213,33 +223,37 @@ const LeafletView: React.FC<LeafletViewProps> = ({
     });
   }, [initialized, zoomControl, sendMessage]);
 
+  // return (
+  //   <View
+  //     style={styles.container}
+  //     ref={viewRef}
+  //     onMessage={handleMessage}
+  //     domStorageEnabled={true}
+  //     startInLoadingState={true}
+  //     onError={onError}
+  //     originWhitelist={['*']}
+  //     renderLoading={renderLoading}
+  //     source={LEAFLET_HTML_SOURCE}
+  //     allowFileAccess={true}
+  //     allowUniversalAccessFromFileURLs={true}
+  //     allowFileAccessFromFileURLs={true}
+  //   />
+  // );
+
+  // For Alternative WebView
   return (
     <WebView
-      containerStyle={styles.container}
-      ref={webViewRef}
-      javaScriptEnabled={true}
-      onLoadEnd={onLoadEnd}
-      onLoadStart={onLoadStart}
+      style={styles.container}
+      ref={viewRef}
+      onLoad={onLoad}
       onMessage={handleMessage}
-      domStorageEnabled={true}
-      startInLoadingState={true}
-      onError={onError}
-      originWhitelist={['*']}
-      renderLoading={renderLoading}
+      // onMessage={({ nativeEvent: { message } }) => (
+      //   setMessage(String(message)), console.log(message, typeof message)
+      // )}
       source={LEAFLET_HTML_SOURCE}
-      allowFileAccess={true}
-      allowUniversalAccessFromFileURLs={true}
-      allowFileAccessFromFileURLs={true}
     />
   );
-};
 
-LeafletView.defaultProps = {
-  renderLoading: () => <LoadingIndicator />,
-  mapLayers: DEFAULT_MAP_LAYERS,
-  zoom: DEFAULT_ZOOM,
-  zoomControl: true,
-  doDebug: __DEV__,
 };
 
 const styles = StyleSheet.create({
